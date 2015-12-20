@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
     validates :email, presence: true, length: { maximum: 255 },
                      format: { with: VALID_EMAIL_REGEX },
                      uniqueness: { case_sensitive: false }
+                 
     validates :phone, presence: true, length: { maximum: 50 },
-                      format: { with: VALID_PHONE_REGEX }
+                         format: { with: VALID_PHONE_REGEX }
+                      
     validates :academy, presence: true, length: { maximum: 255 }
     validates :password, presence: true, length: { minimum: 6 }
     has_secure_password
