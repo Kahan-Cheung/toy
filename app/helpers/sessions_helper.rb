@@ -12,6 +12,11 @@ module SessionsHelper
         cookies.permanent[:remember_token] = user.remember_token
     end
     
+    # 如果指定用户是当前用户，返回 true
+    def current_user?(user)
+        user == current_user
+    end
+    
     # 返回当前登录的用户（如果有的话）
     def current_user
         if (user_id = session[:user_id])
@@ -28,6 +33,12 @@ module SessionsHelper
     # 如果用户已登录，返回 true，否则返回 false
     def logged_in?
         !current_user.nil?
+    end
+    
+    #临时处理成craigzkh为管理员
+    def  admin_in?
+       logged_in?&&current_user.admin?
+       # !!(logged_in?&&current_user.email=='craigzkh@163.com')
     end
     
     #忘记持久会话

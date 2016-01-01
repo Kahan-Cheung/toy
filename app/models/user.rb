@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
                          format: { with: VALID_PHONE_REGEX }
                       
     validates :academy, presence: true, length: { maximum: 255 }
-    validates :password, presence: true, length: { minimum: 6 }
     has_secure_password
+    validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
     
     # 返回指定字符串的哈希摘要
     def User.digest(string)
