@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  introduce: MyText
+  ltnum: 1
+  nownum: 1
+  ccode: MyString
+
+two:
+  name: MyString
+  introduce: MyText
+  ltnum: 1
+  nownum: 1
+  ccode: MyString

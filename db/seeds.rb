@@ -39,4 +39,21 @@ User.create!(
         password: password,
         password_confirmation: password
     )
+    
+end
+
+50.times do |n|
+    name = "team-#{n+1}"
+    introduce = "team-#{n+1} is good"
+    ltnum = 5
+    nownum = 1
+    ccode= "#223321"
+    
+    Group.create!(
+        name: name,
+        introduce: introduce,
+        ltnum: ltnum,
+        nownum: nownum,
+        ccode: ccode
+    )
 end

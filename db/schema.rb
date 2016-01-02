@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160101152713) do
+ActiveRecord::Schema.define(version: 20160101185220) do
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.text     "introduce"
+    t.integer  "ltnum"
+    t.integer  "nownum"
+    t.string   "ccode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "groups", ["ccode", "created_at"], name: "index_groups_on_ccode_and_created_at"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
