@@ -35,7 +35,7 @@ module SessionsHelper
         !current_user.nil?
     end
     
-    #临时处理成craigzkh为管理员
+    #是否是管理员
     def  admin_in?
        logged_in?&&current_user.admin?
        # !!(logged_in?&&current_user.email=='craigzkh@163.com')
@@ -53,5 +53,32 @@ module SessionsHelper
         forget(current_user)
         session.delete(:user_id)
         @current_user = nil
+    end
+    
+    #统计当前正式成员的数量
+    def count_menber(menbers)
+        count = 0;
+        menbers.each do |m|
+          if m.status ==1
+              count=count+1
+          end
+        end
+        return count
+    end
+
+    #当前用户是不是队长
+    def leader?(group)
+         @temp_menber = Menber.where('user_id = ? and group_id = ?', 
+                       current_user.id, group.id)
+
+         if @temp_menber[0] 
+             if @temp_menber[0].authority == 1
+                return true
+             else
+                return false
+             end
+         else
+            return false
+         end
     end
 end

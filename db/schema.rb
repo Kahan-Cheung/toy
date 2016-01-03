@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160101185220) do
+ActiveRecord::Schema.define(version: 20160102183719) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 20160101185220) do
   end
 
   add_index "groups", ["ccode", "created_at"], name: "index_groups_on_ccode_and_created_at"
+
+  create_table "menbers", force: :cascade do |t|
+    t.integer  "authority"
+    t.integer  "status"
+    t.string   "message"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "menbers", ["group_id"], name: "index_menbers_on_group_id"
+  add_index "menbers", ["user_id"], name: "index_menbers_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

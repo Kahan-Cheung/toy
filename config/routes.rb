@@ -13,10 +13,15 @@ Rails.application.routes.draw do
   get 'contact' => 'static_pages#contact'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
+  get 'teams' => 'form_teams#index'
+  get 'apply_teams' => 'form_teams#apply'
+  get 'join_teams' => 'form_teams#join'
+  get 'accpet_menber' => 'form_teams#accpet'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users
   resources :groups
+  resources :menbers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

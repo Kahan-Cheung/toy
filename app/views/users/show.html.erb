@@ -4,8 +4,44 @@
         <section class="user_info">
         <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <table>
+          <tr>
+             <td>姓名:</td>
+             <td><%= @user.name %></td> 
+          </tr>
+          <tr>
+             <td>学院:</td>
+             <td><%= @user.academy %></td>
+          </tr> 
+          <tr>
+             <td>邮箱:</td>
+             <td><%= @user.email %></td>
+          </tr>
+          <tr>
+             <td>电话:</td>
+             <td><%= @user.phone %></td>
+          </tr>
+        </table>
+        
         </h1>
         </section>
     </aside>
+    <div class="col-md-8">
+        <% if @user.menbers.any? %>
+           <h3>所在队伍</h3>
+           <table class="table table-striped">
+               <tr>
+                 <td>队伍名</td>
+                 <td>组队人数</td>
+                 <td>课程编号</td>
+                 <td>是否队长</td>
+                 <td>状态</td>
+                 <td>退出</td>
+               </tr>
+
+                <%= render @menbers %>
+            </table>
+            <%= will_paginate @menbers %>
+        <% end %>
+    </div>
 </div>
