@@ -29,6 +29,12 @@ class GroupsController < ApplicationController
   
   def show
     @group = Group.find(params[:id])
+    @re_groups = Group.where('ccode = ? and name !=? and nownum <= ?', 
+                            @group.ccode, @group.name, @group.ltnum - @group.nownum).order("nownum DESC").limit(6)
+                 #           .paginate :page => params[:page],
+                  #          :per_page => 5
+    
+    #@re_groups =  @re_groups[2..10]
   end
   
   def destroy
