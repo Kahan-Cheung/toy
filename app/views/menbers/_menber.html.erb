@@ -1,0 +1,28 @@
+<!--
+<li id="menber-<%= menber.id %>">
+    <span class="user"><%= link_to menber.user.name, menber.user %></span>
+    <span class="group"><%= menber.group.name %></span>
+
+</li>
+-->
+ <tr>
+     <%if menber.status == 1 %>
+         <td><%= link_to menber.group.name, menber.group %></td>
+     <%else%>
+         <td><%= menber.group.name %></td>
+     <%end%>
+     <td><%= count_menber(menber.group.menbers)%>/<%= menber.group.ltnum %></td>
+     <td><%= menber.group.ccode %></td>
+     <td><%= menber.authority %></td>
+     <%if menber.status == 1 %>
+         <td>接受</td>
+     <%else%>
+         <td>等待</td>
+     <%end%>
+     <td>
+     <% if menber.authority != 1 %>
+     <%= link_to "quit", menber, method: :delete,
+        data: { confirm: "You sure?" } %> 
+    <% end %>    
+    </td>
+ </tr>

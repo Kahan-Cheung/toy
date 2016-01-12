@@ -1,0 +1,37 @@
+<% provide(:title, 'found group') %>
+<h1>创建队伍</h1>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for(@group) do |f| %>
+        
+           <% if @group.errors.any? %>
+                <div id="error_explanation">
+                    <div class="alert alert-danger">
+                        The form contains <%= pluralize(@group.errors.count, "error") %>.
+                    </div>
+                <ul>
+                <% @group.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+                </ul>
+                </div>
+            <% end %>
+
+        
+            <%= f.label "队伍名" %>
+            <%= f.text_field :name, class: 'form-control' %>
+            
+            <%= f.label "课程编号" %>
+            <%= f.text_field :ccode, class: 'form-control' %>
+            
+            <%= f.label "限制人数" %>
+            <%= f.number_field :ltnum, class: 'form-control' %>
+            
+            <%= f.label "队伍简介" %>
+            <%= f.text_field :introduce, class: 'form-control' %>
+
+            <%= f.submit "创建队伍", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+</div>

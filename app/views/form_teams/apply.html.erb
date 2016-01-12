@@ -1,0 +1,11 @@
+<h1>申请加入队伍</h1>
+<%= form_for(@menber) do |f| %>
+ 
+    <%= f.label "简单自我介绍(重点说明在大作业中能负责部分)" %>
+    <%= f.text_area :message, class: 'form-control', cols: "30", rows: "5" %>
+    <%= f.hidden_field :group_id, value: @menber.group_id %>
+    <%= f.hidden_field :user_id, value: @menber.user_id%>
+    <%= f.hidden_field :authority, value: @menber.authority %>
+    <%= f.hidden_field :status, value: @menber.status %>
+    <%= f.submit "申请加入", class: "btn btn-primary" %>
+<% end %>
