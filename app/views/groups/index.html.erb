@@ -16,7 +16,7 @@
          <td>队伍简介</td>
          <td>删除</td>
      </tr>
-<ul>
+
     <% @groups.each do |group| %>
          <tr>
              <td><%= group.name %></td>
@@ -32,6 +32,6 @@
          </tr>
          
     <% end %>
-</ul>
+    
 </table>
 <%= will_paginate %>

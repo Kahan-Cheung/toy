@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class FormTeamsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+     @group = groups(:one)
+  end
 end

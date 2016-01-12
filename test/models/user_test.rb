@@ -45,7 +45,7 @@ class UserTest < ActiveSupport::TestCase
   
   test "phone validation should accept valid phone" do
     valid_phones = %w[18566601473 18566601454]
-      valid_phones.each do |valid_phone|
+    valid_phones.each do |valid_phone|
       @user.phone = valid_phone
       assert @user.valid?, "#{valid_phone.inspect} should be valid"
     end

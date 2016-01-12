@@ -75,10 +75,8 @@
              <td><%= group.nownum %>/<%= group.ltnum %></td>
              <td><%= group.ccode %></td>
              <td><%= group.introduce %></td>
-             <td> <% if current_user.admin? %>
-                | <%= link_to "merge", "#",
+             <td> | <%= link_to "merge", "#",
                 data: { confirm: "You sure?" } %>
-                <% end %>
             </td>
             
          </tr>

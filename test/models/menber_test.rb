@@ -27,6 +27,42 @@ class MenberTest < ActiveSupport::TestCase
     assert_not @menber.valid?
   end
   
+  test "one person can't join twice in one team" do
+     @user.save
+     @group.save
+     @menber.save
+     @menber2 = Menber.new(authority:1,status:1,
+          message:"ddd",user_id:@user.id,group_id:@group.id)
+     assert_not @menber2.valid?
+  end
+  
+  test "group.nownum shou be +1 when add a menber" do
+     @user.save
+     @group.save
+     num = @group.nownum
+     @menber.save
+     assert_equal num+1, @menber.group.nownum 
+  end
+  
+   test "group.nownum shou be no differe when a menber apply for it" do
+     @menber = Menber.new(authority:1,status:0,
+          message:"ddd",user_id:@user.id,group_id:@group.id)
+     @user.save
+     @group.save
+     num = @group.nownum
+     @menber.save
+     assert_equal num, @menber.group.nownum 
+  end
+  
+  test "group.nownum shou be -1 when delete a menber" do
+      @user.save
+      @group.save
+      @menber.save
+      num = @menber.group.nownum
+      @menber.destroy
+      assert_equal num-1, @menber.group.nownum 
+  end
+  
   test "associated menber should be destroyed" do
     @user.save
     @group.save

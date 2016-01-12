@@ -29,10 +29,12 @@
              <td><%= group.introduce %></td>
              <% if logged_in? %>
              <td>
+                 <% if group.nownum != group.ltnum %>
                  <%= link_to "apply",apply_teams_url(group_id:group.id,
                  user_id:current_user.id),
                  data: { confirm: "You sure?" } %>
-            </td>
+                 <% end %>
+             </td>
              <% end %>
          </tr>
     <% end %>
