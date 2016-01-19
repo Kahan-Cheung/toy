@@ -7,15 +7,16 @@ class GroupsController < ApplicationController
     @groups = Group.where('name LIKE ?',  "%#{params[:search]}%")
                     .paginate :page => params[:page],
                               :per_page => 10
-                             # :conditions => ["name like ?", "%#{params[:search]}%"]
+                              # :conditions => ["name like ?", "%#{params[:search]}%"]
+
   end
   
   def create
     @group = Group.new(group_params)
     @group.nownum = 1;
-    puts "ooooooooo"
-    puts current_user.name
-    puts current_user
+  #  puts "ooooooooo"
+  #  puts current_user.name
+  #  puts current_user
     if @group.save
        @menber = Menber.new(authority:1,status:1,
           user_id:current_user.id,group_id:@group.id)

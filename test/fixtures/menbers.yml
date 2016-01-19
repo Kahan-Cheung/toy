@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+menber_one:
   authority: 1
   status: 1
   message: MyString
-  user_id: 
-  group_id: 
+  user: archer
+  group: two
 
-two:
-  authority: 1
+menber_two:
+  authority: 0
   status: 1
   message: MyString
-  user_id: 
-  group_id: 
+  user: lana
+  group: two

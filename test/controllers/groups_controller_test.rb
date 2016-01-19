@@ -13,8 +13,10 @@ class GroupsControllerTest < ActionController::TestCase
   end
   
   test "should redirect group index when destroy a group" do
-    log_in_as(@group)
+    log_in_as(@user)
     delete :destroy, id: @group
     assert_redirected_to groups_path
   end
+  
+
 end

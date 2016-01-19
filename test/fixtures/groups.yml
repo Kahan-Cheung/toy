@@ -7,3 +7,9 @@ one:
   nownum: 0
   ccode: sdfsef
 
+two:
+  name: team2
+  introduce: team1 is good
+  ltnum: 5
+  nownum: 0
+  ccode: sdfsef
