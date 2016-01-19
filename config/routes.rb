@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resources :users
   resources :groups
   resources :menbers
+  get 'apply_merge_teams' => 'relationships#apply'
+  get 'accpet_merge_teams' => 'relationships#accpet'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

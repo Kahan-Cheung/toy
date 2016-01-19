@@ -28,4 +28,14 @@ class GroupTest < ActiveSupport::TestCase
     assert_not @group.valid?
   end
   
+  test "should follow and unfollow a user" do
+    one = groups(:one)
+    two = groups(:two)
+    assert_not one.following?(two)
+    one.follow(two)
+    assert one.following?(two)
+    assert two.followers.include?(one)
+    one.unfollow(two)
+    assert_not one.following?(two)
+  end
 end

@@ -82,6 +82,16 @@ end
     )
 end
 
+30.times do |n|
+    article = Article.new
+    article.group_id = n+1
+    article.name = "这是一篇用于测试的文章"
+    article.content = "这是一篇用于测试的文章,我是由seed生成"
+    article.save
+end
+
+
+
 
 Menber.create!(authority: 0,status: 1,user_id: 31, group_id: 1)
 Menber.create!(authority: 0,status: 1,user_id: 32, group_id: 1)
