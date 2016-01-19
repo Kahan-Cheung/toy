@@ -1,7 +1,7 @@
 <h1><%= @group.name %></h1>
 
 <div class="row">
-<aside class="col-md-6">
+<aside class="col-md-8">
     <h2>队伍成员<h2>
     <table class="table table-striped">
         <tr>
@@ -24,14 +24,34 @@
         <% end %>
     </table>
 </aside>
- <div class="col-md-6">
-        <h1>yunzheng</h1>
+ <div class="col-md-4">
+   <h2>文章<h2>
+   <table class="table table-striped">
+      <tr>
+          <td>标题</td>
+          <td colspan="3"></td>
+      </tr>
+
+        <% @group.articles.each do |article| %>
+          <tr>
+            <td><%= article.name %></td>
+            <td><%= link_to 'Show', article %></td>
+            <td><%= link_to 'Edit', edit_article_path(article) %></td>
+            <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            
+          </tr>
+        <% end %>
+    </table>
+    
+    <br>
+    
+    <%= link_to 'New Article', new_article_url(group_id:@group.id) %>
  </div>
 </div>
 
 <% if leader?(@group) %>
 <div class="row">
-<aside class="col-md-6">
+<aside class="col-md-12">
     <h2>申请加入的成员<h2>
     <table class="table table-striped">
         <tr>
