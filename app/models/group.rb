@@ -1,6 +1,6 @@
 class Group < ActiveRecord::Base
 
-    has_many :menbers
+    has_many :menbers, dependent: :destroy
     has_many :articles
     has_many :active_relationships, class_name: "Relationship",
                             foreign_key: "follower_id",
