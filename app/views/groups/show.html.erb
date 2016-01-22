@@ -33,7 +33,11 @@
                  <td><%= menber.user.academy %></td>
                  <td><%= menber.user.email %></td>
                  <td><%= menber.user.phone %></td>
-                 <td><%= menber.authority %></td>
+                 <td><% if menber.status == 1 %>
+                     是
+                 <% else%>
+                     否
+                 <% end%></td>
              </tr>
               <% end %>
         <% end %>
