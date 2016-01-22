@@ -27,21 +27,120 @@
         </section>
     </aside>
     <div class="col-md-8">
+        
         <% if @user.menbers.any? %>
            <h3>所在队伍</h3>
            <table class="table table-striped">
                <tr>
                  <td>队伍名</td>
                  <td>组队人数</td>
-                 <td>课程编号</td>
+                 <td>课程名称</td>
                  <td>是否队长</td>
                  <td>状态</td>
-                 <td>退出</td>
+                 <td>操作</td>
                </tr>
-
-                <%= render @menbers %>
+                <% @menbers.each do |menber| %>
+                    <%if menber.status == 1 %>
+                     <tr>
+                         <%if menber.status == 1 %>
+                             <td><%= link_to menber.group.name, menber.group %></td>
+                         <%else%>
+                             <td><%= menber.group.name %></td>
+                         <%end%>
+                         <td><%= count_menber(menber.group.menbers)%>/<%= menber.group.ltnum %></td>
+                         <td><%= menber.group.ccode %></td>
+                         <%if menber.authority == 1 %>
+                             <td>是</td>
+                         <%else%>
+                             <td>不是</td>
+                         <%end%>
+                         <%if menber.status == 1 %>
+                             <td>已加入</td>
+                         <%else%>
+                             <td>等待接受</td>
+                         <%end%>
+                         <td>
+                         <% if menber.authority != 1 %>
+                         <%= link_to "退出", menber, method: :delete,
+                            data: { confirm: "You sure?" } %> 
+                         <%else%>
+                            <a href='javascript:void(0)' disabled = 'true' font= 'gray'>退出</a>
+                         <% end %>    
+                        </td>
+                     </tr>
+                    <%end%>
+                <% end %>
             </table>
             <%= will_paginate @menbers %>
         <% end %>
     </div>
+</div>
+
+<div class="row">
+    <aside class="col-md-4">
+        
+        <% if @leader_menbers.any? %>
+        <hr style="height:1px;border:none;border-top:1px solid #555555;" />
+            <h3>我所管理的组</h3>
+            <table class="table table-striped">
+                <tr><td>队伍名</td><td>待处理申请数</td></tr>
+                <% @leader_menbers.each do |menber| %>
+                    <%
+                        @count = 0
+                        menber.group.menbers.each do |m|
+                            if m.status == 0
+                                 @count += 1
+                            end
+                        end
+                    %>
+                    <tr><td><%= link_to menber.group.name, menber.group %></td><td><%=@count %></td></tr>
+                <% end %>
+            </table>
+        <%end%>
+    </aside>
+
+    <div class="col-md-8">
+       
+        <% if @user.menbers.any? %>
+         <hr style="height:1px;border:none;border-top:1px solid #555555;" />
+           <h3>申请中的队伍</h3>
+           <table class="table table-striped">
+               <tr>
+                 <td>队伍名</td>
+                 <td>组队人数</td>
+                 <td>课程名称</td>
+                 <td>状态</td>
+                 <td>操作</td>
+               </tr>
+                <% @menbers.each do |menber| %>
+                    <%if menber.status == 0 %>
+                     <tr>
+                         <%if menber.status == 1 %>
+                             <td><%= link_to menber.group.name, menber.group %></td>
+                         <%else%>
+                             <td><%= menber.group.name %></td>
+                         <%end%>
+                         <td><%= count_menber(menber.group.menbers)%>/<%= menber.group.ltnum %></td>
+                         <td><%= menber.group.ccode %></td>
+                         <%if menber.status == 1 %>
+                             <td>已加入</td>
+                         <%else%>
+                             <td>等待接受</td>
+                         <%end%>
+                         <td>
+                         <% if menber.authority != 1 %>
+                         <%= link_to "取消", menber, method: :delete,
+                            data: { confirm: "You sure?" } %> 
+                         <%else%>
+                            <a href='javascript:void(0)' disabled = 'true' font= 'gray'>退出</a>
+                         <% end %>    
+                        </td>
+                     </tr>
+                    <%end%>
+                <% end %>
+            </table>
+            <%= will_paginate @menbers %>
+        <% end %>
+    </div>
+
 </div>

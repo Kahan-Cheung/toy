@@ -12,7 +12,7 @@ class GroupsIndexTest < ActionDispatch::IntegrationTest
     assert_template 'groups/index'
     first_page_of_groups = Group.paginate(page: 1,per_page: 10)
     first_page_of_groups.each do |group|
-        assert_select 'a[href=?]', group_path(group), text: 'delete',
+        assert_select 'a[href=?]', group_path(group), text: '删除',
         method: :delete
     end
   

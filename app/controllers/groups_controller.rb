@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
                     .paginate :page => params[:page],
                               :per_page => 10
                               # :conditions => ["name like ?", "%#{params[:search]}%"]
-
+    @allgroups = Group.all
   end
   
   def create

@@ -1,5 +1,5 @@
 <% provide(:title, '所有用户') %>
-<h1>所有用户</h1>
+<h1>所有用户</h1><h2>(总数：<%=@count_allusers%>)</h2>
 
 <%= form_tag users_path, :method => :get,  :class =>'form-inline' do -%>
    <%=text_field_tag "search", params[:search], :class => 'form-control' %>

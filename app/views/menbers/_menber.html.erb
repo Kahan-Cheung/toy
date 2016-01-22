@@ -5,7 +5,7 @@
 
 </li>
 -->
-
+<%if menber.status == 1 %>
  <tr>
      <%if menber.status == 1 %>
          <td><%= link_to menber.group.name, menber.group %></td>
@@ -14,17 +14,23 @@
      <%end%>
      <td><%= count_menber(menber.group.menbers)%>/<%= menber.group.ltnum %></td>
      <td><%= menber.group.ccode %></td>
-     <td><%= menber.authority %></td>
-     <%if menber.status == 1 %>
-         <td>接受</td>
+     <%if menber.authority == 1 %>
+         <td>是</td>
      <%else%>
-         <td>等待</td>
+         <td>不是</td>
+     <%end%>
+     <%if menber.status == 1 %>
+         <td>已加入</td>
+     <%else%>
+         <td>等待接受</td>
      <%end%>
      <td>
      <% if menber.authority != 1 %>
-     <%= link_to "quit", menber, method: :delete,
+     <%= link_to "退出", menber, method: :delete,
         data: { confirm: "You sure?" } %> 
-    <% end %>    
+     <%else%>
+        <a href='javascript:void(0)' disabled = 'true' font= 'gray'>退出</a>
+     <% end %>    
     </td>
  </tr>
-
+<%end%>

@@ -7,11 +7,18 @@ class UsersController < ApplicationController
     @users = User.where('name LIKE ?',  "%#{params[:search]}%")
                     .paginate :page => params[:page],
                               :per_page => 10
+    @count_allusers = User.all.count
   end
   
   def show
     @user = User.find(params[:id])
     @menbers = @user.menbers.paginate(page: params[:page])
+    @leader_menbers = []
+    @menbers.each do |m|
+      if m.authority==1
+        @leader_menbers << m
+      end
+    end
     #debugger
   end
  

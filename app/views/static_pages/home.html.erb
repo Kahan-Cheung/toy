@@ -4,9 +4,17 @@
         <h2>
         这是一个可以进行课程快速组队的网站
         </h2>
+    <table class="table table-striped">
+        <tr>网站统计信息（队伍数：<%= @groups.count %>，注册人数：<%= @users.count %>）</tr>
+        <tr><td>课程名</td><td>队伍数</td></tr>
+        <% @groups_sets.each do |ccode,groups| %>
+        <tr>
+            <td> <%= ccode %> </td> 
+            <td> <%= groups.count %> </td> 
+           
+        </tr>
+        <% end %>
+        
+    </table>
     <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
-<!-- 
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-'http://rubyonrails.org/' %>
--->

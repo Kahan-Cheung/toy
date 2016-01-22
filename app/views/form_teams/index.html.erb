@@ -17,7 +17,7 @@
          <td>课程编号</td>
          <td>队伍简介</td>
          <% if logged_in? %>
-         <td>申请参加</td>
+         <td>操作</td>
          <% end %>
      </tr>
 <ul>
@@ -30,7 +30,7 @@
              <% if logged_in? %>
              <td>
                  <% if group.nownum != group.ltnum %>
-                 <%= link_to "apply",apply_teams_url(group_id:group.id,
+                 <%= link_to "申请加入",apply_teams_url(group_id:group.id,
                  user_id:current_user.id),
                  data: { confirm: "You sure?" } %>
                  <% end %>

@@ -52,11 +52,11 @@ end
     
     ccode = ""
     if n<10
-        ccode= "091M4021H-2"
+        ccode= "高级软件工程"
     elsif n<20
-        ccode= "092M3022H"    
+        ccode= "数据挖掘"    
     else
-        ccode = "093M2222H"
+        ccode = "信息检索"
     end
     
     Group.create!(
